@@ -1,14 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Entities;
 
-/**
- *
- * @author Luis Fellipe
- */
+
 public class OrderItem {
+    
+    private Integer quantity;
+    private Double price;    
+    private Product product;
+    
+    Product p = new Product();
+        
+    public OrderItem(){}
+
+    public OrderItem(Integer quantity, Double price) {
+        this.quantity = quantity;
+        this.price = price;
+    }    
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+    
+    public Double subTotal(){
+    
+        return quantity * price;
+        
+    }   
+    
     
 }
