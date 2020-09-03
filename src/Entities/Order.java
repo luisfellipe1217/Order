@@ -1,14 +1,18 @@
 package Entities;
 
 import Entities.enums.OrderStatus;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Order {
 
+    private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
     private Date moment;
     private OrderStatus status;
+    private Client client;
     private List<OrderItem> item = new ArrayList() {
     };
 
@@ -28,6 +32,10 @@ public class Order {
         return status;
     }
 
+    public Client getClient() {
+        return client;
+    }
+
     public List<OrderItem> getItem() {
         return item;
     }
@@ -40,10 +48,9 @@ public class Order {
         this.status = status;
     }
 
-    public void setItem(List<OrderItem> item) {
-        this.item = item;
+    public void setClient(Client client) {
+        this.client = client;
     }
-        
 
     public void addItem(OrderItem newItem) {
 
@@ -56,17 +63,38 @@ public class Order {
         item.remove(newItem);
 
     }
-    
-    public Double total(){
-    
-        double sum =0;
-        for(OrderItem p: item){
-            
-              sum += p.subTotal();
-            
-        }  
-        
+
+    public Double total() {
+
+        double sum = 0;
+        for (OrderItem p : item) {
+
+            sum += p.subTotal();
+
+        }
+
         return sum;
+    }
+
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("Order Sumary \n");
+        sb.append("Order Moment: ");
+        sb.append(moment);
+        sb.append(sdf.format(moment) + "\n");
+        sb.append("OrderStatus \n");
+        sb.append(status + "\n");
+        sb.append("Client:");
+        sb.append(client.toString() + "\n");
+        sb.append("Order Itens: \n");
+        sb.append("");
+        for (OrderItem i : item) {
+
+            sb.append(i.toString() + "\n");
+        }
+        return sb.toString();
+
     }
 
 }
