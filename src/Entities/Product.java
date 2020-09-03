@@ -4,7 +4,7 @@ package Entities;
 public class Product {
     
     private String name;
-    private Double price;
+    public Double price;
     
     public Product(){}
 
