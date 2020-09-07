@@ -32,17 +32,18 @@ public class ExerFixComp {
         
               
         System.out.println("Enter Order Data:");
-        
-        System.out.print("Status:");
+        sc.nextLine();
+        System.out.print("Status: ");
         String orderStatus = sc.nextLine();
-        System.out.print("How many items to this order?");
+        System.out.print("How many items to this order? ");
         int n = sc.nextInt();
         
         Order order = new Order(new Date(), OrderStatus.valueOf(orderStatus), client);
         
         for (int i = 0; i <= n; i++){
         
-            System.out.println("Enter item #" + i + " Data:");
+            System.out.println("Enter item #" + ++i + " Data:");
+            sc.nextLine();
             System.out.print("name: ");
             String iName = sc.nextLine();
             System.out.print("Product price: ");
